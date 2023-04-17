@@ -16,7 +16,7 @@ spec:
       containers:
       - name: react-ui
         image: docker.io/library/ui:latest
-        imagePullPolicy: Always
+        imagePullPolicy: Never
         ports:
         - containerPort: 3000
 
