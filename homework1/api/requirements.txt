@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-flask
-flask_cors
-flask-mysql
-openai
-=======
 aiofiles==22.1.0
 aiohttp==3.8.4
 aiosignal==1.3.1
@@ -139,4 +133,3 @@ Werkzeug==2.2.3
 y-py==0.5.9
 yarl==1.8.2
 ypy-websocket==0.8.2
->>>>>>> 6a25273b1a928c9a3997e955af159d14d6c59e66

@@ -5,5 +5,5 @@ steps:
   - command: " docker build -f ./homework2/docker/api.Dockerfile -t api:now_latest ./homework1/api/"
     label: "docker build api"
 
-  - command: "kubectl apply -f ./homework2/kubernetes/api/deployment.yaml"
+  - command: "kubectl apply -f ./homework2/kubernetes/api/chatgpt-api-deployment.yaml"
     label: "deploy api"
