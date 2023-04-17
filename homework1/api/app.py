@@ -3,8 +3,10 @@ from flask_cors import CORS
 from flaskext.mysql import MySQL
 
 import openai
+'''
 import pika
 import logging
+'''
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "ThisIsMySecret"
@@ -22,6 +24,7 @@ mysql = MySQL(app)
 # Configure the OpenAI API key
 openai.api_key = "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"
 
+'''
 # Set up RabbitMQ connection
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
@@ -34,6 +37,7 @@ logger = logging.getLogger('')
 logger.setLevel(logging.INFO)
 handler = logging.handlers.QueueHandler(channel)
 logger.addHandler(handler)
+'''
 
 @app.route('/')
 def index():
