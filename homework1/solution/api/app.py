@@ -3,11 +3,10 @@ from flask_cors import CORS
 from flaskext.mysql import MySQL
 
 import openai
-import pika
-import logging
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "ThisIsMySecret"
+
 
 CORS(app, origins=['http://localhost:3000'])
 
@@ -20,20 +19,8 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql = MySQL(app)
 
 # Configure the OpenAI API key
-openai.api_key = "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"
+openai.api_key = ""
 
-# Set up RabbitMQ connection
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel()
-
-# Declare queue for logs
-channel.queue_declare(queue='logs')
-
-# Set up logger to send logs to RabbitMQ
-logger = logging.getLogger('')
-logger.setLevel(logging.INFO)
-handler = logging.handlers.QueueHandler(channel)
-logger.addHandler(handler)
 
 @app.route('/')
 def index():
@@ -82,16 +69,14 @@ def login():
     password = request.json.get('password')
 
     # TODO: Add code here to check the username and password against the database
-    # Return error if it doesn't match
     try:
         # Connect to the database
         conn = mysql.connect()
         cursor = conn.cursor()
 
-        # Save the user's sign up information to the database
-        sql = "SELECT username, password from users WHERE username = %s"
-        cursor.execute(sql, username)
-        data = cursor.fetchall()
+        # Query the user information from database
+        sql = "SELECT username, password from users WHERE users = %s"
+        user_data = cursor.execute(sql, username).fetchall()
         conn.commit()
 
         # Close the database connection
@@ -101,10 +86,11 @@ def login():
         return jsonify({"success": False, "error": str(e)})
 
     # TODO: If the username and password are correct, set the username in the session
-    if data and data[0][1] == password:
+    if user_data and user_data['password'] == password:
         session['username'] = username
         return jsonify({"username": username, "error": None})
     else:
+        # if credentials are invalid, return an error
         return jsonify({"username": None, "error": "Invalid username or password"})
 
 
@@ -119,6 +105,7 @@ def logout():
         return {"success": True, "message": f"Logged out user {username}"}
     else:
         return {"success": False, "message": "User is not logged in"}
+
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -161,7 +148,7 @@ def chat():
 
 
 # TODO: Create chat_history API that returns chat history for the specified user
-@app.route("/chat_history", methods=["POST"])
+@app.route("/chat_history", methods=["GET"])
 def chat_history():
     # Retrieve the username from the request
     username = request.args.get("username")
@@ -194,4 +181,4 @@ def chat_history():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='localhost')
+    app.run(debug=True, host='localhost', port=4444)

@@ -1,0 +1,12 @@
+# chatgpt-api-pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: chatgpt-api
+spec:
+  containers:
+  - name: chatgpt-api
+    image: docker.io/library/api:latest
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 3000
