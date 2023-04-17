@@ -1,0 +1,13 @@
+# chatgpt-api-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatgpt-api
+spec:
+  selector:
+    app: chatgpt-api
+  ports:
+  - name: http
+    port: 5000
+    targetPort: 5000
+  type: LoadBalancer
