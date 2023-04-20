@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
       - name: chatgpt-api
-        image: docker.io/library/api:latest
-        imagePullPolicy: Never
+        image: $IMAGE_ID
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
 
