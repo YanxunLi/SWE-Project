@@ -1,5 +1,5 @@
 steps:
-  - command: "git clone https://github.com/leftdata/SWE-Project.git"
+  - command: "git clone https://github.com/YanxunLi/SWE-Project.git"
     label: "clone repo"
 
   - wait
