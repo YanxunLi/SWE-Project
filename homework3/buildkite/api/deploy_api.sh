@@ -3,10 +3,10 @@
 set -euo pipefail
 
 manifest="$(mktemp)"
-DOCKER_REPO=$DOCKER_REPO
+DOCKER_API_REPO=$DOCKER_API_REPO
 
 echo '--- :kubernetes: Shipping'
 
 APP="./homework2/kubernetes/api/deployment.yaml"
-export IMAGE_ID="$DOCKER_REPO:latest"
+export IMAGE_ID="$DOCKER_API_REPO:latest"
 envsubst < $APP | kubectl apply -f -
