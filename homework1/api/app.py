@@ -9,13 +9,13 @@ import logging
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "ThisIsMySecret"
 
-CORS(app, origins=['http://34.138.177.224:3000'])
+CORS(app, origins=['http://localhost:3000'])
 
 # Configure MySQL
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'chatgpt'
-app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
 mysql = MySQL(app)
 
