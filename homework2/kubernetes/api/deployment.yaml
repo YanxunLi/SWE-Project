@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: chatgpt-api
-        image: $IMAGE_ID
+        image: liyanxun/api:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

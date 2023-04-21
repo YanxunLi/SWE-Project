@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: rabbitmq-worker
-        image: your-docker-image:latest  # Set the Docker image for your RabbitMQ worker
+        image: liyanxun/logging:latest  # Set the Docker image for your RabbitMQ worker
         env:
         - name: RABBITMQ_HOST
           value: my-rabbitmq-cluster-rabbitmq  # Set the hostname of your RabbitMQ broker
