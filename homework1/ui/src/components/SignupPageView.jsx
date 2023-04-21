@@ -38,7 +38,7 @@ const SignupPage = () => {
       return;
     }
 
-    fetch("http://35.196.120.14:5000/signup", {
+    fetch("http://35.229.30.49:5000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     const username = localStorage.getItem("username");
     if (username) {
-      fetch(`http://35.196.120.14:5000/login?username=${username}`, {
+      fetch(`http://35.229.30.49:5000/login?username=${username}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

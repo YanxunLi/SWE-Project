@@ -26,7 +26,7 @@ const LoginPage = () => {
 
     // TODO: Send a request to the server to verify the username and password
     // Redirect to chat page if logged in successfully
-    fetch("http://35.196.120.14:5000/login", {
+    fetch("http://35.229.30.49:5000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -28,7 +28,7 @@ const ChatView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // TODO: Send the input to an API to get the response from AI
-    fetch('http://35.196.120.14:5000/chat', {
+    fetch('http://35.229.30.49:5000/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, question }),
