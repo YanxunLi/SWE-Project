@@ -15,7 +15,7 @@ CORS(app, origins=['http://34.138.177.224:3000'])
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'chatgpt'
-app.config['MYSQL_DATABASE_HOST'] = '35.229.30.49'
+app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 
 mysql = MySQL(app)
 
