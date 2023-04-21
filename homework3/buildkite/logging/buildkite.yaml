@@ -9,10 +9,10 @@ steps:
 
   - wait
 
-  - command: "./homework3/buildkite/api/build_logging.sh"
+  - command: "./homework3/buildkite/logging/build_logging.sh"
     label: "build logging app"
 
   - wait
 
   - label: ":rocket: Push to :kubernetes:"
-    command: "./homework3/buildkite/api/deploy_logging.sh"
+    command: "./homework3/buildkite/logging/deploy_logging.sh"
